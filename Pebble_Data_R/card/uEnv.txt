@@ -1,0 +1,5 @@
+cape_enable=capemgr.enable_partno=BB-I2C1
+mmcdev=1 
+bootpart=1:2 
+mmcroot=/dev/mmcblk1p2 ro 
+optargs=quiet
