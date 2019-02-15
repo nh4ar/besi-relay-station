@@ -3,7 +3,7 @@
 ntpdate -b -s -u pool.ntp.org
 
 # install dependencies
-sudo pip install https://gitlab.com/besi/libpebble2/repository/archive.zip?ref=master
+sudo pip install libpebble2
 sudo apt-get install python-zmq
 sudo pip install msgpack-python
 sudo pip install redis
