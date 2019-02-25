@@ -15,7 +15,7 @@ import logging
 
 from rawADC import readADC
 from Audio import audioFeatureExt
-from rMotionFeature import motionFeatExt
+from MotionFeature import motionFeatExt
 
 from threading import Lock
 
