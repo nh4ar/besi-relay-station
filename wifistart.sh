@@ -1,12 +1,12 @@
 #!/bin/bash
-rm /etc/network/interfaces
-cp ~/besi-relay-station/wifi-services/interfaces /etc/network/interfaces
-dos2unix /etc/network/interfaces
-ifup wlan0
 cd ~/besi-relay-station/wifi-services/wifi-reset
 chmod +x install.sh
 ./install.sh
-cd ~/besi-relay-station/wifi-services/wifi-check
-chmod +x install.sh
-./install.sh
+connmanctl tether wifi off
+connmanctl disable wifi
+connmanctl enable wifi
+connmanctl scan wifi
+connmanctl services
+connmanctl agent on
+connmanctl connect wifi_e0b94d199709_424553495f524f55544552_managed_none
 reboot
