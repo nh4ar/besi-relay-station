@@ -66,11 +66,11 @@ def readADC():
 	server_address = (hostIP, BASE_PORT)
 
 	startDateTime = rNTPTime.sendUpdate(server_address, "-99", 5)
+	while startDateTime == None:
+		time.sleep(3)
+		startDateTime = rNTPTime.sendUpdate(server_address, "-99", 5)
 	if startDateTime != None:
 		# use custom function because datetime.strptime fails in multithreaded applications
-		startTimeDT = rNTPTime.stripDateTime(startDateTime)
-	else:
-		startDateTime = rNTPTime.sendUpdate(server_address, "-99", 5)
 		startTimeDT = rNTPTime.stripDateTime(startDateTime)
 	
 	audioFileName = BASE_PATH+"Relay_Station{0}/Audio/Audio{1}.txt".format(BASE_PORT, startTimeDT)
@@ -193,6 +193,8 @@ def readADC():
 		# anything printed in ADC.c is captured in output
 		output = proc.communicate()[0]
 		split_output = output.split(',')
+		# for new relay library (debian 9.5)
+		split_output[0] = split_output[1]
 		# try:
 		# 	proc = subprocess.Popen(["./ADC1"], stdout=subprocess.PIPE,)
 		# 	# anything printed in ADC.c is captured in output
