@@ -5,6 +5,7 @@ sudo apt-get install build-essential python-dev python-setuptools python-pip pyt
 sudo apt-get install python-lightblue bluez python-gobject python-dbus bluez-utils python-bluez -y
 sudo apt-get install dos2unix -y
 sudo pip install Adafruit_BBIO 
+sudo pip install Adafruit_GPIO
 sudo pip install setuptools --upgrade
 sudo pip uninstall distribute -y
 sudo pip install --upgrade setuptools
