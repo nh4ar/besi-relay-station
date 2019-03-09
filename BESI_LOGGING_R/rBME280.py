@@ -104,7 +104,7 @@ def weatherSense(startDateTime, hostIP, BASE_PORT, streaming=True, logging=True)
     global agiStatus
 
 
-    i2c = BME280Init(0x77, 2)
+    i2c = BME280Init(0x77, 1)
     calib = BME280Calib(i2c)
 	
 	
