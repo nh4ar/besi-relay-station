@@ -5,7 +5,7 @@ import time
 import Adafruit_BBIO.ADC as ADC
 import datetime
 import math
-from Adafruit_I2C import Adafruit_I2C
+from Adafruit_GPIO.I2C import Device as Adafruit_I2C
 import struct
 
 # adds a length field at the beginning of the data string
@@ -67,7 +67,7 @@ def calc_temp(mv):
 # initialize the TSL2561 light sensor
 # the I2C address should be 0x39
 def i2c_light_init(addr):
-        i2c =  Adafruit_I2C(addr)
+        i2c =  Adafruit_I2C(addr, 2)
         i2c.write8(0x80, 3) # initialize sensor
         i2c.write8(0x81, 16 + 2) # set Integration time to 402ms and gain to 16x
         return i2c
