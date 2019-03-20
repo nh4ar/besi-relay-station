@@ -6,22 +6,31 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-# auto eth0
-# iface eth0 inet dhcp
+#auto eth0
+#iface eth0 inet dhcp
 # Example to keep MAC address between reboots
-# hwaddress ether DE:AD:BE:EF:CA:FE
+#hwaddress ether DE:AD:BE:EF:CA:FE
 
-# The secondary network interface
-#auto eth1
-#iface eth1 inet dhcp
+##connman: ethX static config
+#connmanctl services
+#Using the appropriate ethernet service, tell connman to setup a static IP address for that service:
+#sudo connmanctl config <service> --ipv4 manual <ip_addr> <netmask> <gateway> --nameservers <dns_server>
 
-# WiFi Example
 auto wlan0
 allow-hotplug wlan0
 iface wlan0 inet dhcp
-    wireless-essid BESI_ROUTER
-#    wpa-ssid "essid"
-#    wpa-psk  "password"
+wireless-essid BESI_ROUTER
+
+##connman: WiFi
+#
+#connmanctl
+#connmanctl> tether wifi off
+#connmanctl> enable wifi
+#connmanctl> scan wifi
+#connmanctl> services
+#connmanctl> agent on
+#connmanctl> connect wifi_*_managed_psk
+#connmanctl> quit
 
 # Ethernet/RNDIS gadget (g_ether)
 # Used by: /opt/scripts/boot/autoconfigure_usb0.sh
